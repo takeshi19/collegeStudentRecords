@@ -28,11 +28,10 @@ int Student::getYearOfBirth() {
 }
 
 int Student::getAge() {
-	return 2016 - getYearOfBirth(); //Current year - YOB = age.
+	return 2018 - getYearOfBirth(); //Current year - YOB = age.
 } 
 
-//FIXME how to return properly?
-const std::vector<double>& Student::getAssignmentsScore() {
+const std::vector<double> &Student::getAssignmentsScore() {
 	return assignmentsScore;
 }
 
@@ -43,22 +42,23 @@ double Student::getProjectScore() {
 int Student::getNumStudents() {
 	return numStudents;
 }
-//Implement the virtual method printDetails() which should print the id, name, age, assignments score, project score, total score, and grade for a given student
 
-//void printDetail
+void Student::printDetails() {
+	std::cout << "Id = " << getID() << "\n";
+	std::cout << "Name = " << getName() << "\n";
+	std::cout << "Age = " << getAge() << "\n";
 
+	std::vector<double> asm_grades = getAssignmentsScore();
+	std::vector<double>::iterator it; //Iterator to assignmentsScore.
+	
+	//**Displaying grades from assignments.**
+	std::cout << "Assignments = [";
+	for (it = asm_grades.begin(); it != asm_grades.end() - 1; it++) {
+		std::cout << *it << ", ";
+	}
+	std::cout << asm_grades.back() << "]";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	std::cout << "Project = " << getProjectScore() << "\n";
+	std::cout << "Total = " << getTotal() << "\n";
+	std::cout << "Grade = " << getGrade() << "\n";
+}

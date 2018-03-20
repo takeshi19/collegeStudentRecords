@@ -16,7 +16,7 @@
 #include <string>
 #include <vector>
 
-const int current_year = 2016;
+const int current_year = 2018;
 
 /**
  * @brief An abstract base class for a Student.
