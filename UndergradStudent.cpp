@@ -12,8 +12,8 @@ UndergradStudent::UndergradStudent(std::string name,
                      std::string yearInCollege) : Student (name, yearOfBirth,
  				assignmentsScore, projectScore) {
 
-	residenceHall = residenceHall; //The hall that the ugrad student resides in.
-	yearInCollege = yearInCollege; //The current year/grade level of student.
+	this->residenceHall = residenceHall; //The hall that the ugrad student resides in.
+	this->yearInCollege = yearInCollege; //The current year/grade level of student.
 	++UndergradStudent::numUndergradStudents;
 }
 

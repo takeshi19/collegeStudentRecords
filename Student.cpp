@@ -53,11 +53,10 @@ void Student::printDetails() {
 	
 	//**Displaying grades from assignments.**
 	std::cout << "Assignments = [";
-	for (it = asm_grades.begin(); it != asm_grades.end() - 1; it++) {
+	for (it = asm_grades.begin(); it != asm_grades.end() - 1; it++)
 		std::cout << *it << ", ";
-	}
-	std::cout << asm_grades.back() << "]";
-
+	std::cout << asm_grades.back() << "]\n";
+	
 	std::cout << "Project = " << getProjectScore() << "\n";
 	std::cout << "Total = " << getTotal() << "\n";
 	std::cout << "Grade = " << getGrade() << "\n";

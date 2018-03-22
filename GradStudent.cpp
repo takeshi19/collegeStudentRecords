@@ -14,8 +14,8 @@ GradStudent::GradStudent(std::string name,
                 std::string advisor) : Student(name, yearOfBirth,
                                 assignmentsScore, projectScore) {
 	
-	researchArea = researchArea;
-	advisor = advisor;	
+	this->researchArea = researchArea;
+	this->advisor = advisor;	
 	++GradStudent::numGradStudents;
 }
 
