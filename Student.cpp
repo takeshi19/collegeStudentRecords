@@ -14,7 +14,7 @@ Student::Student (std::string name, int yearOfBirth,
 	++Student::numStudents;			      //Increment num references made.	
 }
 
-int getID() {
+int Student::getId() {
 	++ID;	//Increment ID; lowest ID is 1.
 	return ID;
 }
@@ -44,7 +44,8 @@ int Student::getNumStudents() {
 }
 
 void Student::printDetails() {
-	std::cout << "Id = " << getID() << "\n";
+	std::cout << "STUDENT DETAILS:\n";
+	std::cout << "Id = " << getId() << "\n";
 	std::cout << "Name = " << getName() << "\n";
 	std::cout << "Age = " << getAge() << "\n";
 

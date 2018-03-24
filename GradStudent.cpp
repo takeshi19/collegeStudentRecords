@@ -35,16 +35,15 @@ void GradStudent::printDetails() {
 	Student::printDetails();
 	std::cout << "Type = Graduate Student\n";
 	std::cout << "Research Area = " << researchArea << "\n";
-	std::cout << "Advisor = " << advisor << "\n";
+	std::cout << "Advisor = " << advisor << "\n\n";
 }
 
 double GradStudent::getTotal() {
 	std::vector<double> asm_scores = getAssignmentsScore();
         double avg_scores = std::accumulate(asm_scores.begin(), asm_scores.end(), 0)/asm_scores.size();
 
-        return avg_scores * 0.5 * getProjectScore() * 0.5;
+        return avg_scores * 0.5 + getProjectScore() * 0.5;
 }
-
 
 std::string GradStudent::getGrade() {
 	if (getTotal() >= 80) 

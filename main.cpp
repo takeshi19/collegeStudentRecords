@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 // File Name:      main.cpp
 //
 // Author:         Gerald
@@ -50,9 +50,9 @@ int main(int argc, char *argv[]) {
     // create a vector of references for undergraduate students.
     std::vector<std::reference_wrapper<Student>> ugstudentRefs;
     for (auto it = ugstudents.begin(); it != ugstudents.end(); ++it) {
-        ugstudentRefs.push_back(*it);
+	  ugstudentRefs.push_back(*it);
     }
-
+	
     std::cout << "UNDERGRADUATE STUDENT INFORMATION" << std::endl;
     std::cout << "---------------------------------" << std::endl;
     printStudents(ugstudentRefs);

@@ -33,14 +33,14 @@ void UndergradStudent::printDetails() {
 	Student::printDetails(); //Calling on overrided function
 	std::cout << "Type = Undergraduate Student\n";
 	std::cout << "Residence Hall = " << getResidenceHall() << "\n";
-	std::cout << "Year in College = " << getYearInCollege() << "\n";
+	std::cout << "Year in College = " << getYearInCollege() << "\n\n";
 }
 
 double UndergradStudent::getTotal() {
 	std::vector<double> asm_scores = getAssignmentsScore();
 	double avg_scores = std::accumulate(asm_scores.begin(), asm_scores.end(), 0)/asm_scores.size();
 
-	return avg_scores * 0.7 * getProjectScore() * 0.3;
+	return avg_scores * 0.7 + getProjectScore() * 0.3;
 }
 
 std::string UndergradStudent::getGrade() {

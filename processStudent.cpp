@@ -16,6 +16,7 @@
 #include <sstream>
 #include <string>
 #include <typeinfo>
+#include <numeric>
 
 /**
  *@brief Reads student's data from an input file and either creates a 
@@ -87,48 +88,78 @@ void fillStudents(std::ifstream &inFile,
  *@param students, Vector of Student objects to call respective functions on.
  */
 void printStudents(const std::vector<std::reference_wrapper<Student>> &students) {
-	for (auto it = students.begin(); it != students.end(); it++) 
+	for (auto it = students.begin(); it != students.end(); it++)  
 		(*it).get().printDetails();	
 }
 
+/**
+ *@brief Computes and prints: 1. The number of students, based on type of object,
+ * 			      2. The mean of the total score per student, also 	 
+ *				 depending on their object type.
+ *			      3. A sorted list of students (grad/undergrad) based on 
+ *				 total score in descending order.
+ * 
+ *@param students, Vector of Student objects to display data about.
+ */
 void computeStatistics(std::vector<std::reference_wrapper<Student>> &students) {
+	
+	double gradCount = 0;	//Amount of grad objects recorded.
+	double undergradCount = 0; //Amount of undergrad objects recorded.
+	double meanUgrads = 0;  //The mean value of all scores of undergrad students.
+	double meanGrads = 0;   //The mean value of all scores of grad students.
+	std::vector<double> totalUgs; //Vector of total graduate scores.
+	std::vector<double> totalGs;  //Vector of total undergrad scores.
+	
+	//**Doing an in-place sort of students based on total scores.**
+	auto descendingOrder = [] (Student& x, Student& y) -> bool {
+		return x.getTotal() > y.getTotal();
+	};
+	std::sort(students.begin(), students.end(), descendingOrder); 
+	
+	//**Calculating the mean of the total score for each object.**
+	for (auto it = students.begin(); it != students.end(); it++) {
+		if (typeid((*it).get()) == typeid(GradStudent)) {
+			gradCount++;
+			totalGs.push_back((*it).get().getTotal());
+			meanGrads = std::accumulate(totalGs.begin(), totalGs.end(), 0)/gradCount;
+		}
+		else if (typeid((*it).get()) == typeid(UndergradStudent)){
+			undergradCount++;
+			totalUgs.push_back((*it).get().getTotal()); 
+			meanUgrads = std::accumulate(totalUgs.begin(), totalUgs.end(), 0)/undergradCount;			 	
+		}
+	}
+	
+	//**If there are undergrad students found, show their stats.**
+	if (undergradCount > 0) {
+		std::cout << "Number of students = " << undergradCount  << "\n";
+		std::cout << "The mean of the total score = " << meanUgrads << "\n";
+   		std::cout << "The sorted list of students (id, name, total, grade) " <<
+			      "in descending order of total: \n";
+		for (auto it = students.begin(); it != students.end(); it++) {
+			if (typeid((*it).get()) == typeid(UndergradStudent)) {
+				std::cout << (*it).get().getId() << ", ";
+				std::cout << (*it).get().getName() << ", ";
+				std::cout << (*it).get().getTotal() << ", ";
+				std::cout << (*it).get().getGrade() << "\n";
+			}
+		}
+		std::cout << "\n";
+	}
+	//**Else, there are grad students found, show their stats instead.**
+	else {
+		std::cout << "Number of students = " << gradCount << "\n";
+		std::cout << "The mean of the total score = " << meanGrads << "\n";
+   		std::cout << "The sorted list of students (id, name, total, grade) " <<
+			      "in descending order of total: \n";
+		for (auto it = students.begin(); it != students.end(); it++) {
+			if (typeid((*it).get()) == typeid(GradStudent)) {
+				std::cout << (*it).get().getId() << ", ";
+				std::cout << (*it).get().getName() << ", ";
+				std::cout << (*it).get().getTotal() << ", ";
+				std::cout << (*it).get().getGrade() << "\n";
+			}
+		}
+	}
 
-    // TODO: Implement this method.
-
-    // compute the # of students based on the type of students.
-
-    // compute the mean of the total score.
-
-    // sort and print the students based on their total.
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} 
