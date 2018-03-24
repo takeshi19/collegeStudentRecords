@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 
     fillStudents(inFile, gstudents, ugstudents);
 
-    std::cout << "The total number of students in the class = "
+    std::cout << "\nThe total number of students in the class = "
               << Student::getNumStudents() << std::endl << std::endl;
 
     // create a vector of references for undergraduate students.

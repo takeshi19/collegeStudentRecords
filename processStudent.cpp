@@ -6,7 +6,26 @@
 //
 // Description:    Methods to perform some processing on student objects.
 ///////////////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////////////////
+// Main File:        main.cpp
+// Other Files:      UndergradStudent.cpp, GradStudent.cpp
+// Semester:         CS 368 Spring 2018
+//
+// Author:           Manuel T. Gomez
+// Email:            gomez@cs.wisc.edu
+// CS Login:         gomez
+//
+/////////////////////////// OTHER SOURCES OF HELP //////////////////////////////
+//                   fully acknowledge and credit all sources of help,
+//                   other than Instructors and TAs.
+//
+// Persons:             N/A         
+// 
+//
+// Online sources:      N/A
+//
+// 
+//////////////////////////// 80 columns wide ///////////////////////////////////
 #include "processStudent.hpp"
 
 #include <algorithm>
@@ -161,5 +180,5 @@ void computeStatistics(std::vector<std::reference_wrapper<Student>> &students) {
 			}
 		}
 	}
-
+	std::cout << "\n";
 } 

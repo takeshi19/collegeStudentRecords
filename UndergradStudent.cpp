@@ -1,3 +1,25 @@
+////////////////////////////////////////////////////////////////////////////////
+// Main File:        main.cpp
+// This File:        UndergradStudent.cpp
+// Other Files:      processStudent.cpp, GradStudent.cpp
+// Semester:         CS 368 Spring 2018
+//
+// Author:           Manuel T. Gomez
+// Email:            gomez@cs.wisc.edu
+// CS Login:         gomez
+//
+/////////////////////////// OTHER SOURCES OF HELP //////////////////////////////
+//                   fully acknowledge and credit all sources of help,
+//                   other than Instructors and TAs.
+//
+// Persons:             N/A         
+// 
+//
+// Online sources:      N/A
+//
+// 
+//////////////////////////// 80 columns wide ///////////////////////////////////
+
 #include <numeric>
 #include <iostream>
 #include "UndergradStudent.hpp"
